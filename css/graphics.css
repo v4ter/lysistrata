@@ -1,0 +1,68 @@
+body{
+	color:#4f4f4f;
+}
+
+h1, h2, h3, h4, h5, h6{
+	color:#b25215;
+	font-style:italic;
+	font-weight:normal;
+	margin-top:0;
+}
+
+h1{
+	font-size:34px;
+}
+
+h2{
+	font-size:30px;
+}
+
+h3{
+	font-size:27px;
+}
+
+a{
+	text-decoration:none;
+	color:#B25215;
+}
+
+a:hover{
+	text-decoration:underline;
+}
+
+.highlight{
+	/*color: #733D00;*/
+    font-weight: bold;
+}
+
+.header{
+	background: url(../img/woodnav2.png) no-repeat top left;
+	
+}
+
+.logo{
+	background: url(../img/tampela.png) no-repeat 60px 10px;
+}
+.main-nav a{
+	text-decoration:none;
+	color:#5f3100;
+	font-size:23px;
+}
+
+.main-nav a:hover{
+	text-decoration:underline;
+}
+
+.content{
+	background: url(../img/content_pattern.png) repeat;
+}
+
+.content:after{
+	content:" ";
+	position:absolute;
+	right:-15px;
+	top:0;
+	width:15px;
+	height:100%;
+	background:url(../img/contentafter.png) repeat-y top left ;
+}

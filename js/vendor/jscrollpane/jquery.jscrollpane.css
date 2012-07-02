@@ -1,0 +1,45 @@
+.jspContainer {
+    overflow: hidden;
+    position: absolute;
+}
+.jspPane {
+    position: absolute;
+}
+.jspVerticalBar {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    right: 4px;
+    top: 0;
+    width: 16px;
+}
+.jspCap {
+    display: none;
+}
+.jspTrack {
+    background: url("images/track.png") repeat-y scroll 50% 50% transparent;
+    position: relative;
+}
+.jspDrag {
+    background: url("images/drag.png") no-repeat scroll 50% 50% transparent;
+    cursor: pointer;
+    left: 0;
+    position: relative;
+    top: 0;
+}
+.jspArrow {
+    background: none repeat scroll 0 0 #50506D;
+    cursor: pointer;
+    display: block;
+    text-indent: -20000px;
+}
+.jspVerticalBar .jspArrow {
+    height: 16px;
+}
+.jspArrowUp {
+    background: url("images/up.png") no-repeat scroll center top transparent;
+}
+.jspArrowDown {
+    background: url("images/down.png") no-repeat scroll center bottom transparent;
+}
