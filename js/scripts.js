@@ -6,6 +6,7 @@ define([
 	'jquery.mousewheel',
 	'jquery.scrollpane'
 ], function($){
+	var clickMode = 'normal';
 
 	function resizePanel() {
 	// What happens if we resize the window...
@@ -29,16 +30,17 @@ define([
 			prevSectionId, prevContentId, nextSectionId, nextContentId;
 
 		$('a[data-section]').on('click', function(e) {
+			e.preventDefault();
+
 			var curSectionId = $('a[data-section].selected').attr('data-section'),
 				curContentId = $('a[data-section].selected').attr('href'),
 				sectionId = $(this).attr('data-section'),
-				contentId = $(this).attr('href'),
-				text = $(this).text();
+				contentId = $(this).attr('href');
 
 			$('a[data-section]').removeClass('selected');
 			$(this).addClass('selected');
 
-			if(sectionId === '#common') $(sectionId).attr('data-parent', curSectionId);
+			if(sectionId === '#common' && curSectionId !== '#common') $(sectionId).attr('data-parent', curSectionId);
 
 			if(curContentId === contentId) return false;
 
@@ -71,20 +73,19 @@ define([
 				});
 			}
 			
-			updateHistory(sectionId, contentId, text);
+			if(clickMode === 'normal')	updateHistory(sectionId, contentId);
 			
-			return e.preventDefault();
+			clickMode = 'normal';
 		});
 	}
 
 	function updateHistory(sectionId, contentId, title){
 		var dataToSave = {
 			href : contentId,
-			section : sectionId,
-			title : title
+			section : sectionId
 		};
 
-		history.pushState(dataToSave, dataToSave.section, dataToSave.title);
+		history.pushState(dataToSave, dataToSave.section);
 	}
 
 	function handleState(){
@@ -92,6 +93,7 @@ define([
 			var section = e.originalEvent.state.section,
 				content = e.originalEvent.state.href;
 
+			clickMode = 'history';
 			$('a[data-section=' + section +'][href=' + content + ']').trigger('click');
 			
 		});
@@ -146,8 +148,7 @@ define([
 			href : $('a[data-section].selected').attr('href'),
 			section : $('a[data-section].selected').attr('data-section')
 		},
-		$('a[data-section].selected').attr('href'),
-		$('a[data-section].selected').text()
+		$('a[data-section].selected').attr('href')
 		);
 
 		handleState();
